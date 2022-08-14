@@ -1,0 +1,7 @@
+redis
+# gdal
+geopandas
+plotly
+dash
+dash_bootstrap_components
+

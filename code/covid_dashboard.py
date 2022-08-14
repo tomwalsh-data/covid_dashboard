@@ -10,6 +10,7 @@ import geopandas as gpd
 import numpy as np
 import pandas as pd
 import re
+import os
 
 import plotly
 import plotly.express as px
@@ -19,7 +20,8 @@ from plotly.subplots import make_subplots
 # module to handle the data collection & clean up
 from get_data import get_data
 
-
+print(os.getcwd())
+print(os.listdir() )
 # =============================================================
 # Get the data
 # =============================================================
@@ -36,9 +38,9 @@ if send_requests:
 
 else:
     # use previously retrieved files
-    daily = pd.read_csv('daily.csv').set_index('area_code')
-    weekly = pd.read_csv('weekly.csv').set_index('area_code')
-    cumulative = pd.read_csv('cumulative.csv').set_index('area_code')
+    daily = pd.read_csv('code/daily.csv').set_index('area_code')
+    weekly = pd.read_csv('code/weekly.csv').set_index('area_code')
+    cumulative = pd.read_csv('code/cumulative.csv').set_index('area_code')
 
 # convert dates and sort
 weekly['date'] = pd.to_datetime(weekly['date'], dayfirst=True)
@@ -51,7 +53,7 @@ cumulative['date'] = pd.to_datetime(cumulative['date'], dayfirst=True)
 cumulative.sort_values('date', inplace=True)
 
 # get the council boundary shapefiles (as of Dec 2019) at 500m resolution
-geos = gpd.read_file('./shape_files/Local_Authority_Districts_(December_2019)_Boundaries_UK_BUC/Local_Authority_Districts_(December_2019)_Boundaries_UK_BUC.shp')
+geos = gpd.read_file('./code/shape_files/Local_Authority_Districts_(December_2019)_Boundaries_UK_BUC/Local_Authority_Districts_(December_2019)_Boundaries_UK_BUC.shp')
 geos.set_index('lad19cd', inplace=True)
 geos = geos[['lad19nm', 'geometry']]
 geos = geos.to_crs(epsg=4326)                # important: crs must be set to work with plotly!
