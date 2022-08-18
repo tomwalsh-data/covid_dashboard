@@ -1,6 +1,12 @@
 # covid_dashboard
 plotly/dash app to visualize covid in England
 
+build & run
+see https://stackoverflow.com/questions/61194881/docker-container-run-locally-didnt-send-any-data
+docker build -t covid_dashboard .
+docker run -p 8050:8050 covid_dashboard
+access on localhost:8050
+
 `covid_dashboard.py` contains the main code to visualize the spatial distribution of cases, deaths, and vaccinations across England at a chosen date. 
 Time series for interactivly selected councils are show on the right. Data may be daily, weekly (7-day rolling average), or cumulative.
 

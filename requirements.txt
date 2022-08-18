@@ -1,5 +1,3 @@
-redis
-# gdal
 geopandas
 plotly
 dash

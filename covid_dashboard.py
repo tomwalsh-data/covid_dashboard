@@ -536,5 +536,5 @@ def update_elements(fig, map_selection, relay, dd_selection, dataset, current_se
 
 
 if __name__ == "__main__":
-    app.run_server(debug=True)
+    app.run_server(host='0.0.0.0', debug=True)
 
